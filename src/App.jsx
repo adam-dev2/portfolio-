@@ -68,17 +68,17 @@ const App = () => {
 
         <div className="flex mb-6">
           <img
-            src="./profile.jpg"
+            src="./Media.jpg"
             alt="profile"
             className="rounded-3xl w-36 h-36 object-cover"
           />
         </div>
 
         <div className="mb-10 space-y-2">
-          <h1 className="text-3xl font-light">Hello!, I'm Adam</h1>
-          <p className="text-sm text-gray-200">22, India | Automation Engineer</p>
+          <h1 className="text-3xl font-light">Hey!! , I'm Adam</h1>
+          <p className="text-sm text-gray-200">22, Automation Engineer</p>
           <p className="text-gray-300/80 max-w-xl text-sm">
-            I'm a Automation Engineer and Full Stack Developer crafting scalable and intuitive web platforms. From building responsive frontends to architecting robust backends, I turn complex ideas into seamless user experiences.
+            I'm a Automation Engineer. I enjoy building simple, reliable web products and exploring how complex web apps work under the hood.
           </p>
         </div>
 
@@ -178,6 +178,34 @@ const App = () => {
             ))}
           </motion.div>
         </div>
+        <div className="mt-20 mb-10">
+          <h1 className="text-pink-400 font-semibold text-3xl mb-4">Get In Touch</h1>
+          <p className="font-light text-md opacity-80 max-w-xl mb-6">
+            Open to collaborations, freelance work, or just a friendly chat about tech and 3D art.
+          </p>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a 
+              href="mailto:shaikadam273@gmail.com"
+              className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 hover:border-green-400 transition text-center group"
+            >
+              <div className="text-3xl mb-2">✉️</div>
+              <h3 className="text-white font-semibold mb-1">Email Me</h3>
+              <p className="text-gray-400 text-sm">shaikadam273@gmail.com</p>
+            </a>
+            
+            <a 
+              href="https://x.com/dev_adam2"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 hover:border-blue-400 transition text-center group"
+            >
+              <div className="text-3xl mb-2">💬</div>
+              <h3 className="text-white font-semibold mb-1">DM on Twitter</h3>
+              <p className="text-gray-400 text-sm">@dev_adam2</p>
+            </a>
+          </div>
+        </div>
         <div className="pb-10 mt-14">
             <div className="border-b-1 border-zinc-700 opacity-70"></div>
             <div className="flex justify-between pt-4">
@@ -196,6 +224,7 @@ const App = () => {
               </div>
             </div>
         </div>
+        
       </motion.div>
       <AnimatePresence>
         {selectedProject && (
