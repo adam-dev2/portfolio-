@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 
-const PhotoViewer = ({ imgObj }) => {
+const PhotoViewer = ({ imgObj,setSelectedProject }) => {
     
   return (
     <motion.div 
       layoutId={`container-${imgObj.id}`}
       className="max-w-lg bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden"
+      onClick={()=> {setSelectedProject(null)}}
     >
       <img
         src={imgObj.image}

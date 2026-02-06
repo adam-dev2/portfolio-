@@ -237,7 +237,7 @@ const App = () => {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div onClick={(e) => e.stopPropagation()}>
-              <PhotoViewer imgObj={selectedProject} />
+              <PhotoViewer imgObj={selectedProject} setSelectedProject={setSelectedProject}/>
             </motion.div>
           </motion.div>
         )}
