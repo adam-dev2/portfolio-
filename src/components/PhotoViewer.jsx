@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
 const PhotoViewer = ({ imgObj }) => {
-    console.log(`container-${imgObj.id}`);
     
   return (
     <motion.div 

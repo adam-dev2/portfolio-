@@ -2,6 +2,7 @@ import { FiGithub } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 import { LuBookOpen } from "react-icons/lu";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { MdOutlineMail } from "react-icons/md";
 import { motion,AnimatePresence } from "framer-motion";
 import projects from "./projects";
 import experiences from "./experience";
@@ -163,7 +164,7 @@ const App = () => {
                 key={project.id}
                 layoutId={`container-${project.id}`}
                 className="bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden cursor-pointer"
-                onClick={() => {console.log("In App.jsx ",`container-${project.id}`);photoClicked(project)}}
+                onClick={() => {photoClicked(project)}}
               >
                 <img
                   src={project.image}
@@ -189,7 +190,7 @@ const App = () => {
               href="mailto:shaikadam273@gmail.com"
               className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 hover:border-green-400 transition text-center group"
             >
-              <div className="text-3xl mb-2">✉️</div>
+              <div className="text-3xl mb-2 flex justify-center"><MdOutlineMail /></div>
               <h3 className="text-white font-semibold mb-1">Email Me</h3>
               <p className="text-gray-400 text-sm">shaikadam273@gmail.com</p>
             </a>
@@ -200,7 +201,7 @@ const App = () => {
               rel="noreferrer"
               className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 hover:border-blue-400 transition text-center group"
             >
-              <div className="text-3xl mb-2">💬</div>
+              <div className="text-3xl mb-2 flex justify-center"><FaXTwitter size={25} /></div>
               <h3 className="text-white font-semibold mb-1">DM on Twitter</h3>
               <p className="text-gray-400 text-sm">@dev_adam2</p>
             </a>
