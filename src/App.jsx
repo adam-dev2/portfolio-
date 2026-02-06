@@ -2,10 +2,12 @@ import { FiGithub } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 import { LuBookOpen } from "react-icons/lu";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import { motion,AnimatePresence } from "framer-motion";
 import projects from "./projects";
 import experiences from "./experience";
 import blenderProjects from "./blenderProjects";
+import { useEffect, useState } from "react";
+import PhotoViewer from "./components/PhotoViewer";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -18,13 +20,23 @@ const containerVariants = {
   },
 };
 
+
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const App = () => {
-  return (
+  const [selectedProject, setSelectedProject] = useState(null);
+
+
+  const photoClicked = (project) => {
+    setSelectedProject(project);
+  };
+
+
+  return <>
+    
     <div
       className="min-h-screen text-white font-sans px-6 pt-24"
       style={{
@@ -72,7 +84,7 @@ const App = () => {
 
         <div className="mt-20">
           <h1 className="text-green-400 font-semibold text-3xl">Experience</h1>
-          <p className="pt-3 font-light text-md opacity-80 max-w-xl font-sans">
+          <p className="pt-3 font-light text-md opacity-80 max-w-2xl font-sans">
             A glimpse into my internship experiences where I applied and sharpened my full-stack skills.
           </p>
           <motion.div
@@ -136,7 +148,7 @@ const App = () => {
 
         <div className="mt-20 pb-4">
           <h1 className="text-purple-400 font-semibold text-3xl">Blender Projects</h1>
-          <p className="pt-3 font-light text-md opacity-80 max-w-xl font-sans">
+          <p className="pt-3 font-light text-md opacity-80 max-w-3xl font-sans">
             Besides coding, I enjoy crafting cinematic 3D scenes in Blender. These are a few personal explorations where I focused on lighting, mood, and storytelling through environment design.
           </p>
 
@@ -146,20 +158,21 @@ const App = () => {
             initial="hidden"
             animate="visible"
           >
-            {blenderProjects.map((project, index) => (
+            {blenderProjects.map((project) => (
               <motion.div
-                key={index}
-                variants={cardVariants}
-                className="bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden hover:scale-102 transition"
+                key={project.id}
+                layoutId={`container-${project.id}`}
+                className="bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden cursor-pointer"
+                onClick={() => {console.log("In App.jsx ",`container-${project.id}`);photoClicked(project)}}
               >
                 <img
                   src={project.image}
-                  alt={project.title}
                   className="object-cover w-full h-56"
+                  alt={project.title}
                 />
                 <div className="p-4">
-                  <h3 className="text-white text-md font-semibold">{project.title}</h3>
-                  <p className="text-sm text-gray-400 mt-1">{project.description}</p>
+                  <h3 className="text-white font-semibold">{project.title}</h3>
+                  <p className="text-gray-400">{project.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -184,8 +197,25 @@ const App = () => {
             </div>
         </div>
       </motion.div>
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div onClick={(e) => e.stopPropagation()}>
+              <PhotoViewer imgObj={selectedProject} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
-  );
+      
+  </>
 };
 
 export default App;
