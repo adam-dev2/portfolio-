@@ -1,29 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowLeft, FiCalendar, FiTag, FiX } from "react-icons/fi";
+import matter from 'gray-matter'
 
 const rawFiles = import.meta.glob("../blogs/*.md", {
   eager: true,
   query: "?raw",
   import: "default",
 });
-
-function parseFrontmatter(raw) {
-  const match = raw.replace(/\r\n/g, '\n').match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  raw = raw.replace(/\r\n/g, '\n').trim();
-  if (!match) return { meta: { title: "Untitled", date: "", tags: [] }, body: raw };
-  const meta = {};
-  match[1].split("\n").forEach((line) => {
-    const [key, ...rest] = line.split(":");
-    const val = rest.join(":").trim();
-    if (key?.trim() === "tags") {
-      meta.tags = val.replace(/[\[\]]/g, "").split(",").map((t) => t.trim()).filter(Boolean);
-    } else if (key?.trim()) {
-      meta[key.trim()] = val;
-    }
-  });
-  return { meta, body: match[2].trim() };
-}
 
 function renderMarkdown(md) {
   return md
@@ -48,7 +32,7 @@ const BlogPanel = ({ isOpen, onClose }) => {
   useEffect(() => {
     const parsed = Object.entries(rawFiles).map(([path, raw]) => {
       const slug = path.replace("./blogs/", "").replace(".md", "");
-      const { meta, body } = parseFrontmatter(raw);
+      const { data: meta, content: body } = matter(raw);
       return { slug, meta, body };
     });
     parsed.sort((a, b) => new Date(b.meta.date) - new Date(a.meta.date));
