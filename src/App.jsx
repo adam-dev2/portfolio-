@@ -184,7 +184,7 @@ const App = () => {
         <div className="mt-20 mb-10">
           <h1 className="text-pink-400 font-semibold text-3xl mb-4">Get In Touch</h1>
           <p className="font-light text-md opacity-80 max-w-xl mb-6">
-            Open to collaborations, freelance work, or just a friendly chat about tech and 3D art.
+            Open to collaborations or just a friendly chat about tech or 3D art.
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
