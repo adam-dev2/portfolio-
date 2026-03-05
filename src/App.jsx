@@ -7,8 +7,9 @@ import { motion,AnimatePresence } from "framer-motion";
 import projects from "./projects";
 import experiences from "./experience";
 import blenderProjects from "./blenderProjects";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PhotoViewer from "./components/PhotoViewer";
+import BlogPanel from './components/BlogPanel'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,6 +30,7 @@ const cardVariants = {
 
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [blogClick,setBlogClicked] = useState(false);
 
 
   const photoClicked = (project) => {
@@ -50,7 +52,7 @@ const App = () => {
       }}
     >
       <motion.div
-        className="max-w-3xl mx-auto"
+        className="max-w-3xl mx-auto relative overflow-hidden"
         initial={{ opacity: 0, filter: "blur(8px)", y: 20 }}
         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -59,9 +61,9 @@ const App = () => {
           <a className="hover:scale-105" href="https://x.com/dev_adam2" target="_blank" rel="noreferrer">
             <FaXTwitter size={25} />
           </a>
-          <a className="hover:scale-105" href="https://medium.com/@shaikadam273" target="_blank" rel="noreferrer">
+          <button className="hover:scale-105 cursor-pointer"  onClick={() => {setBlogClicked(true)}}>
             <LuBookOpen size={25} />
-          </a>
+          </button>
           <a className="hover:scale-105" href="https://github.com/adam-dev2" target="_blank" rel="noreferrer">
             <FiGithub size={25} />
           </a>
@@ -225,7 +227,7 @@ const App = () => {
               </div>
             </div>
         </div>
-        
+         <BlogPanel isOpen={blogClick} onClose={() => setBlogClicked(false)} />
       </motion.div>
       <AnimatePresence>
         {selectedProject && (
@@ -242,7 +244,6 @@ const App = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
     </div>
       
   </>
