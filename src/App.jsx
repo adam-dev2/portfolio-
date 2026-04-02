@@ -9,7 +9,6 @@ import experiences from "./experience";
 import blenderProjects from "./blenderProjects";
 import { useState } from "react";
 import PhotoViewer from "./components/PhotoViewer";
-import BlogPanel from './components/BlogPanel'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -30,7 +29,6 @@ const cardVariants = {
 
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [blogClick,setBlogClicked] = useState(false);
 
 
   const photoClicked = (project) => {
@@ -61,9 +59,6 @@ const App = () => {
           <a className="hover:scale-105" href="https://x.com/dev_adam2" target="_blank" rel="noreferrer">
             <FaXTwitter size={25} />
           </a>
-          <button className="hover:scale-105 cursor-pointer"  onClick={() => {setBlogClicked(true)}}>
-            <LuBookOpen size={25} />
-          </button>
           <a className="hover:scale-105" href="https://github.com/adam-dev2" target="_blank" rel="noreferrer">
             <FiGithub size={25} />
           </a>
@@ -227,7 +222,6 @@ const App = () => {
               </div>
             </div>
         </div>
-         <BlogPanel isOpen={blogClick} onClose={() => setBlogClicked(false)} />
       </motion.div>
       <AnimatePresence>
         {selectedProject && (
