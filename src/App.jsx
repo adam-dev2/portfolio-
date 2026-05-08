@@ -74,9 +74,9 @@ const App = () => {
 
         <div className="mb-10 space-y-2">
           <h1 className="text-3xl font-light">Hey!! , I'm Adam</h1>
-          <p className="text-sm text-gray-200">22, Automation Engineer</p>
+          <p className="text-sm text-gray-200">22, Backend Engineer</p>
           <p className="text-gray-300/80 max-w-xl text-sm">
-            I'm a Automation Engineer. I enjoy building simple, reliable web products and exploring how complex web apps work under the hood.
+            I'm a Backend Engineer. I enjoy building simple, reliable web products and exploring how complex web apps work under the hood.
           </p>
         </div>
 
@@ -189,7 +189,7 @@ const App = () => {
             >
               <div className="text-3xl mb-2 flex justify-center"><MdOutlineMail /></div>
               <h3 className="text-white font-semibold mb-1">Email Me</h3>
-              <p className="text-gray-400 text-sm">shaikadam273@gmail.com</p>
+              <p className="text-gray-400 text-sm">shaikadam252@gmail.com</p>
             </a>
             
             <a 
