@@ -1,20 +1,15 @@
 @import "tailwindcss";
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-/* Dark mode handling */
-:root {
-  color-scheme: light;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.dark {
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+:root {
   color-scheme: dark;
 }
 
