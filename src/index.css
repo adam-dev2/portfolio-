@@ -9,6 +9,15 @@
   animation: blink 1s step-end infinite;
 }
 
+@utility bg-grid-pattern {
+  background-color: #0d0d0d;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 50%),
+    linear-gradient(0deg, rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
 :root {
   color-scheme: dark;
 }

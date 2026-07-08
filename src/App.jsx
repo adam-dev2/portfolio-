@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { LuBookOpen } from "react-icons/lu";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import projects from "./projects";
 import experiences from "./experience";
 import blenderProjects from "./blenderProjects";
@@ -28,6 +28,8 @@ const cardVariants = {
 
 const App = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   const photoClicked = (project) => {
     setSelectedProject(project);
@@ -35,17 +37,12 @@ const App = () => {
 
   return (
     <>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 z-50 origin-left"
+        style={{ scaleX }}
+      />
       <div
-        className="min-h-screen text-white font-sans px-6 pt-24"
-        style={{
-          backgroundColor: "#0d0d0d",
-          backgroundImage: `
-            radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 50%),
-            linear-gradient(0deg, rgba(255,255,255,0.07) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)
-          `,
-          backgroundSize: "100% 100%, 40px 40px, 40px 40px",
-        }}
+        className="min-h-screen text-white font-sans px-6 pt-24 bg-grid-pattern"
       >
         <motion.div
           className="max-w-3xl mx-auto relative"
@@ -82,7 +79,7 @@ const App = () => {
               />
             </div>
             <div className="space-y-2">
-              <h1 className="text-5xl md:text-6xl font-semibold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+              <h1 className="text-2xl md:text-2xl font-semibold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
                 Hey!!, I'm Adam
               </h1>
               <p className="text-sm text-gray-200">
