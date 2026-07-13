@@ -245,12 +245,12 @@ const App = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
-                href="mailto:shaikadam273@gmail.com"
+                href="mailto:adiem.rar@Proton.me"
                 className="bg-neutral-900 border border-pink-500/10 rounded-3xl p-6 hover:border-pink-400 transition-all duration-300 text-center group shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
               >
                 <div className="text-3xl mb-2 flex justify-center"><MdOutlineMail /></div>
                 <h3 className="text-white font-semibold mb-1">Email Me</h3>
-                <p className="text-gray-400 text-sm">shaikadam273@gmail.com</p>
+                <p className="text-gray-400 text-sm">adiem.rar@Proton.me</p>
               </a>
 
               <a
